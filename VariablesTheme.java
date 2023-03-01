@@ -26,9 +26,9 @@ public class VariablesTheme {
         int generalPrice = penPrice + bookPrice;
         int discountAmount = (int) (generalPrice * discount);
         System.out.println("Общая стоимость товаров без скидки: " + generalPrice + " рублей");
-        System.out.println("Сумма скидки: " + (int) discountAmount + " рубля");
+        System.out.println("Сумма скидки: " + discountAmount + " рубля");
         System.out.print("Общая стоимость товаров со скидкой: ");
-        System.out.println((int) (generalPrice - discountAmount) + " рублей");
+        System.out.println((generalPrice - discountAmount) + " рублей");
 
         System.out.println("\n3. Вывод слова JAVA");
         System.out.println("   J    a  v     v  a");
@@ -103,12 +103,12 @@ public class VariablesTheme {
         System.out.println("\n8. Вывод количества сотен, десятков и единиц числа");
         int num = 123;
         int hundreds = num / 100;
-        int dozens = num / 10 % 10;
-        int units = num % 10;
+        int tens = num / 10 % 10;
+        int ones = num % 10;
         System.out.println("Число 123 содержит: ");
-        System.out.println(hundreds + " сотен\n" + dozens + " десятков\n" + units + " единиц");
-        System.out.println("Сумма его цифр = " + (hundreds + dozens + units));
-        System.out.println("Произведение = " + (hundreds * dozens * units));
+        System.out.println(hundreds + " сотен\n" + tens + " десятков\n" + ones + " единиц");
+        System.out.println("Сумма его цифр = " + (hundreds + tens + ones));
+        System.out.println("Произведение = " + (hundreds * tens * ones));
 
         System.out.println("\n9. Вывод времени");
         int seconds = 86399;
