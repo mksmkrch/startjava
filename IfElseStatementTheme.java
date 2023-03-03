@@ -7,19 +7,19 @@ public class IfElseStatementTheme {
             System.out.println("Этому человеку " + age + " лет");
         } else {
             System.out.println("Этому человеку меньше 21 года");
-        };
+        }
         boolean male = true;
         if (!male) {
             System.out.println("Это женщина");
         } else {
             System.out.println("Это мужчина");
-        };
+        }
         float height = 1.76f;
         if (height < 1.80f) {
             System.out.println("Его рост меньше 180 см");
         } else {
             System.out.println("Его рост больше 180 см");
-        };
+        }
         char firstLetterName = "Максим".charAt(0);
         if (firstLetterName == 'М') {
             System.out.println("Первая буква в его имени - " + firstLetterName);
@@ -27,7 +27,7 @@ public class IfElseStatementTheme {
             System.out.println("Первая буква в его имени - " + firstLetterName);
         } else {
             System.out.println("Совпадений не найдено");
-        };
+        }
 
         System.out.println("\n2. Поиск max и min числа");
         int num1 = 2;
@@ -38,25 +38,25 @@ public class IfElseStatementTheme {
             System.out.println(num1 + "<" + num2);
         } else {
             System.out.println(num1 + ">" + num2);
-        };
+        }
 
         System.out.println("\n3. Проверка числа");
-        int number = 23;
-        System.out.println("Исходное число - " + number);
-        if (number != 0) {
-            if (number % 2 == 1) {
+        int num3 = 23;
+        System.out.println("Исходное число - " + num3);
+        if (num3 != 0) {
+            if (num3 % 2 == 1) {
                 System.out.println("Это нечетное число");
             } else {
                 System.out.println("Это четное число");
-            };
-            if (number > 0) {
+            }
+            if (num3 > 0) {
                 System.out.println("Это положительное число");
             } else {
                 System.out.println("Это отрицательное число");
-            };
+            }
         } else {
             System.out.println("Число равно нулю");
-        };
+        }
 
         System.out.println("\n4. Поиск одинаковых цифр в числах");
         num1 = 659;
@@ -73,106 +73,143 @@ public class IfElseStatementTheme {
         } else {
             if (hundredsNum1 == hundredsNum2) {
                 System.out.println("цифры " + hundredsNum1 + " одинаковые в 3 разряде");
-            };
+            }
             if (tensNum1 == tensNum2) {
                 System.out.println("цифры " + tensNum1 + " одинаковые во 2 разряде");
-            };
+            }
             if (onesNum1 == onesNum2) {
                 System.out.println("цифры " + onesNum1 + " одинаковые в 1 разряде");
-            };
-        };
+            }
+        }
 
         System.out.println("\n5. Определение символа по его коду");
         char symbol = '\u0057';
         System.out.println(symbol);
-        if (symbol >= '\u0030' && symbol <= '\u0039') {
+        if (symbol >= 0 && symbol <= 9) {
             System.out.println("Это число");
-        } else if (symbol >= '\u0041' && symbol <= '\u005a') {
+        } else if (symbol >= 'A' && symbol <= 'Z') {
             System.out.println("Это большая буква");
-        } else if (symbol >= '\u0061' && symbol <= '\u007a') {
+        } else if (symbol >= 'a' && symbol <= 'z') {
             System.out.println("Это маленькая буква");
         } else {
             System.out.println("Это не буква и не число");
-        };
+        }
 
         System.out.println("\n6. Подсчет суммы вклада и начисленных банком %");
         int depositAmount = 300000;
-        float percent;
+        float percent = 0.1f;;
         if (depositAmount < 100000) {
             percent = 0.05f;
         } else if (depositAmount >= 100000 && depositAmount <= 300000) {
             percent = 0.07f;
-        } else {
-            percent = 0.1f;
-        };
+        }
         System.out.println("Сумма вклада - " + depositAmount + " руб.");
         int accuredInterest = (int) (depositAmount * percent);
         System.out.println("Начисленный % - " + accuredInterest + " руб.");
         System.out.println("Итоговая сумма с % - " + (depositAmount + accuredInterest) + " руб.");
 
         System.out.println("\n7. Определение оценки по предметам");
-        float percentageScoreHistory = 0.59f;
-        float percentageScoreProgramming = 0.91f;
-        float averagePercentage = (percentageScoreProgramming + percentageScoreHistory) / 2 * 100;
-        int markHistory;
-        int markProgramming;
-        if (percentageScoreHistory <= 0.6f) {
-            markHistory = 2;
-        } else if (percentageScoreHistory > 0.6f && percentageScoreHistory <= 0.73f) {
-            markHistory = 3;
-        } else if (percentageScoreHistory > 0.73f && percentageScoreHistory <= 0.91f) {
-            markHistory = 4;
-        } else {
-            markHistory = 5;
-        };
-        System.out.println(markHistory + " - История");
-        if (percentageScoreProgramming <= 0.6f) {
-            markProgramming = 2;
-        } else if (percentageScoreProgramming > 0.6f && percentageScoreProgramming <= 0.73f) {
-            markProgramming = 3;
-        } else if (percentageScoreProgramming > 0.73f && percentageScoreProgramming <= 0.91f) {
-            markProgramming = 4;
-        } else {
-            markProgramming = 5;
-        };
-        System.out.println(markProgramming + " - Программирование");
-        System.out.println("Средний балл - " + (markProgramming + markHistory) / 2);
-        System.out.println("Средний % по предметам - " + (int) averagePercentage + "%");
+        int historyPercent = 59;
+        int programmingPercent = 91;
+        int averagePercentage = (programmingPercent + historyPercent) / 2;
+        int historyMark = 5;
+        if (historyPercent <= 60) {
+            historyMark = 2;
+        } else if (historyPercent > 60 && historyPercent <= 73) {
+            historyMark = 3;
+        } else if (historyPercent > 73 && historyPercent <= 91) {
+            historyMark = 4;
+        }
+        System.out.println(historyMark + " - История");
+        int programmingMark = 5;
+        if (programmingPercent <= 60) {
+            programmingMark = 2;
+        } else if (programmingPercent > 60 && programmingPercent <= 73) {
+            programmingMark = 3;
+        } else if (programmingPercent > 73 && programmingPercent <= 91) {
+            programmingMark = 4;
+        }
+        System.out.println(programmingMark + " - Программирование");
+        System.out.println("Средний балл - " + (programmingMark + historyMark) / 2);
+        System.out.println("Средний % по предметам - " + averagePercentage + "%");
 
         System.out.println("\n8. Расчет прибыли за год");
         int rentalPrice = 5000;
         int monthProfit = 13000;
         int costPrice = 9000;
         int yearProfit = (monthProfit - rentalPrice - costPrice) * 12;
-        if (yearProfit >= 0) {
+        if (yearProfit > 0) {
             System.out.println("прибыль за год: +" + yearProfit + " руб.");
         } else {
             System.out.println("прибыль за год: " + yearProfit + " руб.");
-        };
+        }
 
         System.out.println("\n9. Подсчет количества банкнот");
         int needMoney = 567;
-        int notesDenomination100 = 10;
-        int notesDenomination10 = 5;
-        int notesDenomination1 = 50;
+        int atbHundreds = 10;
+        int atbTens = 5;
+        int atbOnes = 50;
         int needHundreds = needMoney / 100;
         int needTens = needMoney / 10 % 10;
         int needOnes = needMoney % 10;
-        if (notesDenomination100 < needHundreds) {
-            needTens += (needHundreds - notesDenomination100) * 10;
-            needHundreds = notesDenomination100;
-        };
-        if (notesDenomination10 < needTens) {
-            needOnes += (needTens - notesDenomination10) * 10;
-            needTens = notesDenomination10;
-        };
-        if (notesDenomination1 < needOnes) {
-            System.out.println("Не хватает банкнот для выдачи нужной суммы");
+        if (atbHundreds < needHundreds) {
+            needMoney -= atbHundreds * 100;
+            needTens += (needHundreds - atbHundreds) * 10;
+            needHundreds = atbHundreds;
+            if (needMoney > atbTens * 10 + atbOnes) {
+                System.out.println("Недостаточно банкнот");
+            } else if (atbTens < needTens) {
+                needMoney -= atbTens * 10;
+                needOnes += (needTens - atbTens) * 10;
+                needTens = atbTens;
+                if (needMoney > atbOnes) {
+                    System.out.println("Недостаточно банкнот");
+                } else {
+                    System.out.println("Банкнота номиналом 100USD: " + needHundreds + " шт.");
+                    System.out.println("Банкнота номиналом 10USD: " + needTens + " шт.");
+                    System.out.println("Банкнота номиналом 1USD: " + needOnes + " шт.");
+                    System.out.print("Выдаваемая сумма: ");
+                    System.out.print(needHundreds * 100 + needTens * 10 + needOnes);
+                    System.out.println(" USD");
+                }
+            } else if (atbOnes < needOnes) {
+                System.out.println("Недостаточно банкнот");
+            } else {
+                System.out.println("Банкнота номиналом 100USD: " + needHundreds + " шт.");
+                System.out.println("Банкнота номиналом 10USD: " + needTens + " шт.");
+                System.out.println("Банкнота номиналом 1USD: " + needOnes + " шт.");
+                System.out.print("Выдаваемая сумма: ");
+                System.out.print(needHundreds * 100 + needTens * 10 + needOnes);
+                System.out.println(" USD");
+            }
         } else {
-            System.out.println("Банкнота номиналом 100USD: " + needHundreds + " шт.");
-            System.out.println("Банкнота номиналом 10USD: " + needTens + " шт.");
-            System.out.println("Банкнота номиналом 1USD: " + needOnes + " шт.");
-            System.out.println("Выдаваемая сумма: " + needMoney + "USD");
-        };
+            needMoney -= needHundreds * 100;
+            if (needMoney > atbTens * 10 + atbOnes) {
+                System.out.println("Недостаточно банкнот");
+            } else if (atbTens < needTens) {
+                needMoney -= atbTens * 10;
+                needOnes += (needTens - atbTens) * 10;
+                needTens = atbTens;
+                if (needMoney > atbOnes) {
+                    System.out.println("Недостаточно банкнот");
+                } else {
+                    System.out.println("Банкнота номиналом 100USD: " + needHundreds + " шт.");
+                    System.out.println("Банкнота номиналом 10USD: " + needTens + " шт.");
+                    System.out.println("Банкнота номиналом 1USD: " + needOnes + " шт.");
+                    System.out.print("Выдаваемая сумма: ");
+                    System.out.print(needHundreds * 100 + needTens * 10 + needOnes);
+                    System.out.println(" USD");
+                }
+            } else if (atbOnes < needOnes) {
+                System.out.println("Недостаточно банкнот");
+            } else {
+                System.out.println("Банкнота номиналом 100USD: " + needHundreds + " шт.");
+                System.out.println("Банкнота номиналом 10USD: " + needTens + " шт.");
+                System.out.println("Банкнота номиналом 1USD: " + needOnes + " шт.");
+                System.out.print("Выдаваемая сумма: ");
+                System.out.print(needHundreds * 100 + needTens * 10 + needOnes);
+                System.out.println(" USD");
+            }
+        }
     }
 }
