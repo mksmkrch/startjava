@@ -149,20 +149,20 @@ public class IfElseStatementTheme {
         int atbHundreds = 10;
         int atbTens = 5;
         int atbOnes = 50;
+        int atbMoney = atbHundreds * 100 + atbTens * 10 + atbOnes;
         int needHundreds = needMoney / 100;
         int needTens = needMoney / 10 % 10;
         int needOnes = needMoney % 10;
-        if (atbHundreds < needHundreds) {
-            needTens += (needHundreds - atbHundreds) * 10;
-            needHundreds = atbHundreds;
-        }
-        if (atbTens < needTens) {
-            needOnes += (needTens - atbTens) * 10;
-            needTens = atbTens;
-        }
-        if (atbOnes < needOnes) {
+        if (needMoney > atbMoney) {
             System.out.println("В банкомате недостаточно средств");
         } else {
+            if (atbHundreds < needHundreds) {
+            needTens += (needHundreds - atbHundreds) * 10;
+            needHundreds = atbHundreds;
+            } else if (atbTens < needTens) {
+                needOnes += (needTens - atbTens) * 10;
+                needTens = atbTens;
+            }
             System.out.println("Банкнота номиналом 100USD: " + needHundreds + " шт.");
             System.out.println("Банкнота номиналом 10USD: " + needTens + " шт.");
             System.out.println("Банкнота номиналом 1USD: " + needOnes + " шт.");
