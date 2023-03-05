@@ -146,13 +146,13 @@ public class IfElseStatementTheme {
 
         System.out.println("\n9. Подсчет количества банкнот");
         int needMoney = 567;
+        int needHundreds = needMoney / 100;
+        int needTens = needMoney / 10 % 10;
+        int needOnes = needMoney % 10;
         int atbHundreds = 10;
         int atbTens = 5;
         int atbOnes = 50;
         int atbMoney = atbHundreds * 100 + atbTens * 10 + atbOnes;
-        int needHundreds = needMoney / 100;
-        int needTens = needMoney / 10 % 10;
-        int needOnes = needMoney % 10;
         if (needMoney > atbMoney) {
             System.out.println("В банкомате недостаточно средств");
         } else {
