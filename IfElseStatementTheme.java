@@ -146,9 +146,9 @@ public class IfElseStatementTheme {
 
         System.out.println("\n9. Подсчет количества банкнот");
         int needMoney = 567;
-        int atbHundreds = 567;
-        int atbTens = 0;
-        int atbOnes = 7;
+        int atbHundreds = 10;
+        int atbTens = 5;
+        int atbOnes = 50;
         int needHundreds = needMoney / 100;
         int needTens = needMoney / 10 % 10;
         if (atbHundreds < needHundreds) {
