@@ -2,17 +2,17 @@ public class CyclesTheme {
 
     public static void main(String[] args) {
         System.out.println("\n1. Подсчет суммы четных и нечетных чисел");
-        int num = -10;
+        int counter = -10;
         int sumEvenNums = 0;
         int sumOddNums = 0;
         do {
-            if (num % 2 == 0) {
-                sumEvenNums += num;
+            if (counter % 2 == 0) {
+                sumEvenNums += counter;
             } else {
-                sumOddNums += num;
+                sumOddNums += counter;
             }
-            num++;
-        } while (num <= 21);
+            counter++;
+        } while (counter <= 21);
         System.out.print("В промежутке [-10, 21] сумма четных чисел = " + sumEvenNums);
         System.out.println(", а нечетных = " + sumOddNums);
 
@@ -49,9 +49,9 @@ public class CyclesTheme {
 
         System.out.println("\n4. Вывод чисел на консоль в несколько строк");
         int count = 0;
-        int intervalStart = 1;
-        int intervalEnd = 24;
-        for (int i = intervalStart; i < intervalEnd; i += 2) {
+        int startInterval = 1;
+        int endInterval = 24;
+        for (int i = startInterval; i < endInterval; i += 2) {
             System.out.printf("%2d%s", i, " ");
             count++;
             if (count % 5 == 0) {
@@ -97,7 +97,7 @@ public class CyclesTheme {
                 System.out.print("#");
                 column++;
             }
-            System.out.println("");
+            System.out.println();
             row--;
         }
         System.out.println();
