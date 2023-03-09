@@ -49,9 +49,8 @@ public class CyclesTheme {
 
         System.out.println("\n4. Вывод чисел на консоль в несколько строк");
         int count = 0;
-        int startInterval = 1;
         int endInterval = 24;
-        for (int i = startInterval; i < endInterval; i += 2) {
+        for (int i = 1; i < endInterval; i += 2) {
             System.out.printf("%2d%s", i, " ");
             count++;
             if (count % 5 == 0) {
