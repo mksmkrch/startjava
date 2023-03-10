@@ -1,4 +1,4 @@
-public class GameGuessTheNumber {
+public class MyFirstGame {
 
     public static void main(String[] args) {
         int hiddenNum = 47;
