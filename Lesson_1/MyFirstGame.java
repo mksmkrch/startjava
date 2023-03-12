@@ -6,7 +6,7 @@ public class MyFirstGame {
         while (playerNum != hiddenNum) {
             if (playerNum < hiddenNum) {
                 System.out.printf("Число %d меньше того, что загадал компьютер\n", playerNum);
-                playerNum += 1;
+                playerNum ++;
             } else {
                 System.out.printf("Число %d больше того, что загадал компьютер\n", playerNum);
                 playerNum -= 4;
