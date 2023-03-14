@@ -4,10 +4,10 @@ public class CalculatorTest {
 
     public static void main(String[] args) {
         Scanner scanStr = new Scanner(System.in);
-        String yesNo = "yes";
+        String answer = "yes";
         Calculator calculator = new Calculator();
-        do {
-            if (yesNo.equals("yes")) {
+        while (!answer.equals("no")) {
+            if (answer.equals("yes")) {
                 System.out.print("Введите первое число: ");
                 int numA = scanStr.nextInt();
                 System.out.print("Введите знак математической операции: ");
@@ -16,10 +16,8 @@ public class CalculatorTest {
                 int numB = scanStr.nextInt();
                 System.out.println("Результат: " + calculator.calculation(numA, numB, sign));
             } 
-            do {
-                System.out.print("Хотите продолжить вычисления? [yes/no]: ");
-                yesNo = scanStr.next();
-            } while (!yesNo.equals("yes") && !yesNo.equals("no"));
-        } while (!yesNo.equals("no"));
+            System.out.print("Хотите продолжить вычисления? [yes/no]: ");
+            answer = scanStr.next();
+        }
     }
 }

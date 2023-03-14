@@ -17,7 +17,7 @@ public class GuessNumber {
         hiddenNum = num;
     }
 
-    public boolean isGame() {
+    public boolean isGameStatus() {
         return gameStatus;
     }
 
