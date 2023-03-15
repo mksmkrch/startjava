@@ -10,8 +10,9 @@ public class JaegerTest {
         jaegerOne.setSpeed(9);
         jaegerOne.setStrength(8);
         jaegerOne.setArmor(6);
-        Jaeger jaegerTwo = new Jaeger("Gipsy Danger", "Mark-3", "USA", 260f, 1.98f, 7, 8, 6);
         jaegerOne.showInfo();
+
+        Jaeger jaegerTwo = new Jaeger("Gipsy Danger", "Mark-3", "USA", 260f, 1.98f, 7, 8, 6);
         jaegerTwo.showInfo();
         jaegerOne.move("forward");
         jaegerOne.move("back");

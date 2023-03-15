@@ -1,29 +1,23 @@
 public class Calculator {
 
-    private int result;
-
-    public int calculation(int numA, int numB, char sign) {
+    public int calculate(int num1, int num2, char sign) {
+        int result = 1;
         switch(sign) {
             case '+' :
-                result = numA + numB;
-                break;
+                return num1 + num2;
             case '-' :
-                result = numA - numB;
-                break;
+                return num1 - num2;
             case '*' :
-                result = numA * numB;
-                break;
+                return num1 * num2;
             case '/' :
-                result = numA / numB;
-                break;
+                return num1 / num2;
             case '^' :
-                result = numA;
-                for (int i = 1; i < numB; i++) {
-                    result *= numA;
+                for (int i = 0; i < num2; i++) {
+                    result *= num1;
                 }
                 break;
             case '%' :
-                result = numA % numB;
+                return num1 % num2;
         }
         return result;
     }

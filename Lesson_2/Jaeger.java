@@ -10,7 +10,7 @@ public class Jaeger {
     private int armor;
 
     public Jaeger(String modelName, String mark, String origin, float height, float weight,
-                    int speed, int strength, int armor) {
+            int speed, int strength, int armor) {
         this.modelName = modelName;
         this.mark = mark;
         this.origin = origin;
@@ -67,7 +67,11 @@ public class Jaeger {
         System.out.println();
     }
 
-    boolean drift(String command) {
+    public String scanKaiju() {
+        return "scanning";
+    }
+
+    public boolean drift(String command) {
         boolean active = false;
         if (command.equals("on") && !active) {
             speed *= 2;
@@ -85,15 +89,11 @@ public class Jaeger {
         return active;
     }
 
-    void move(String command) {
+    public void move(String command) {
         System.out.println(modelName + " moved " + command);
     }
 
-    String scanKaiju() {
-        return "scanning";
-    }
-
-    void useVortexCannon(String command) {
+    public void useVortexCannon(String command) {
         if (command.equals("on")) {
             speed *= 10;
             strength *= 10;

@@ -5,7 +5,7 @@ public class GuessNumber {
     private Player playerOne;
     private Player playerTwo;
     private int hiddenNum;
-    private boolean gameStatus = true;
+    private boolean gameStatus;
     private Scanner scanStr = new Scanner(System.in);
 
     public GuessNumber(Player playerOne, Player playerTwo) {
@@ -13,19 +13,9 @@ public class GuessNumber {
         this.playerTwo = playerTwo;
     }
 
-    public void setHiddenNum(int num) {
-        hiddenNum = num;
-    }
-
-    public boolean isGameStatus() {
-        return gameStatus;
-    }
-
-    public void setGameStatus() {
+    public void start() {
+        hiddenNum = (int) (1 + Math.random() * 100);
         gameStatus = true;
-    }
-
-    public void game() {
         do {
             System.out.print(playerOne.getName() + ", введите число: ");
             playerOne.setNum(chekNum(scanStr.nextInt()));
