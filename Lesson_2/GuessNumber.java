@@ -2,49 +2,48 @@ import java.util.Scanner;
 
 public class GuessNumber {
 
-    private Player playerOne;
-    private Player playerTwo;
+    private Player player1;
+    private Player player2;
     private int hiddenNum;
-    private boolean gameStatus;
-    private Scanner scanStr = new Scanner(System.in);
+    private Scanner scanner = new Scanner(System.in);
 
-    public GuessNumber(Player playerOne, Player playerTwo) {
-        this.playerOne = playerOne;
-        this.playerTwo = playerTwo;
+    public GuessNumber(Player player1, Player player2) {
+        this.player1 = player1;
+        this.player2 = player2;
     }
 
     public void start() {
         hiddenNum = (int) (1 + Math.random() * 100);
-        gameStatus = true;
-        do {
-            System.out.print(playerOne.getName() + ", введите число: ");
-            playerOne.setNum(chekNum(scanStr.nextInt()));
-            compare(playerOne.getNum(), playerOne.getName());
-            if (gameStatus) {
-                System.out.print(playerTwo.getName() + ", введите число: ");
-                playerTwo.setNum(chekNum(scanStr.nextInt()));
-                compare(playerTwo.getNum(), playerTwo.getName());
-            }
-        } while (gameStatus);
+        while (makeMove(player1) && makeMove(player2)) {}
     }
 
-    private void compare(int playerNum, String playerName) {
+    private boolean makeMove(Player player) {
+        inputNum(player);
+        return compare(player);
+    }
+
+
+    private void inputNum(Player player) {
+        System.out.print(player.getName() + ", введите число: ");
+        int num = scanner.nextInt();
+        while (num <= 0 || num > 100) {
+            System.out.print("Некорректное число, введите число из диапазона (0, 100]\n");
+            num = scanner.nextInt();
+        }
+        player.setNum(num);
+    }
+
+    private boolean compare(Player player) {
+        int playerNum = player.getNum();
         if (playerNum == hiddenNum) {
-            System.out.println(playerName + " победил!");
-            gameStatus = false;
+            System.out.println(player.getName() + " победил!");
+            return false;
         } else if (playerNum < hiddenNum) {
             System.out.printf("Число %d меньше того, что загадал компьютер\n", playerNum);
         } else {
             System.out.printf("Число %d больше того, что загадал компьютер\n", playerNum);
         }
-    }
-
-    private int chekNum(int num) {
-        while (num <= 0 || num > 100) {
-            System.out.print("Некорректное число, введите число из диапазона (0, 100]\n");
-            num = scanStr.nextInt();
-        }
-        return num;
+        return true;
     }
 }
 
