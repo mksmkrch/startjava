@@ -58,17 +58,18 @@ public class ArrayTheme {
         }
 
         System.out.println("\n5. Генерация уникальных чисел");
-        intArr = new int[30];
-        len = intArr.length;
+        int[] uniqueNums = new int[30];
+        len = uniqueNums.length;
         for (int i = 0; i < len; i++) {
-            int num;
-            do {
-                num = (int) (60 + Math.random() * 40);
-            } while (!checkNum(num, intArr, i));
-            intArr[i] = num;
-            sortArr(intArr, i);
+            int num = (int) (60 + Math.random() * 40);
+            if (checkNum(num, uniqueNums, i)) {
+                uniqueNums[i] = num;
+                sortArr(uniqueNums, i);
+            } else {
+                i--;
+            }
         }
-        outIntArr(intArr);
+        outIntArr(uniqueNums);
 
         System.out.println("6. Копирование не пустых строк");
         String[] stringArr = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
