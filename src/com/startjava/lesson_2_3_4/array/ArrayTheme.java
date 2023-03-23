@@ -8,9 +8,8 @@ public class ArrayTheme {
         outIntArr(intArr);
         int len = intArr.length;
         for (int i = 0; i < len; i++) {
-            len--;
             int temp = intArr[i];
-            intArr[i] = intArr[len];
+            intArr[i] = intArr[--len];
             intArr[len] = temp;
         }
         outIntArr(intArr);
@@ -35,16 +34,17 @@ public class ArrayTheme {
             doubleArr[i] = Math.random();
         }
         outDoubleArr(doubleArr);
+        System.out.println();
         double middleCellValue = doubleArr[len / 2];
-        int countZero = 0;
+        int stepCountZero = 0;
         for (int i = 0; i < len; i++) {
             if (doubleArr[i] > middleCellValue) {
                 doubleArr[i] = 0;
-                countZero++;
+                stepCountZero++;
             }
         }
         outDoubleArr(doubleArr);
-        System.out.println("Количество обнуленных ячеек: " + countZero);
+        System.out.println("Количество обнуленных ячеек: " + stepCountZero);
 
         System.out.println("\n4. Вывод элементов массива лесенкой в обратном порядке");
         char[] alphabet = new char[26];
@@ -62,32 +62,32 @@ public class ArrayTheme {
         len = uniqueNums.length;
         for (int i = 0; i < len; i++) {
             int num = (int) (60 + Math.random() * 40);
-            if (checkNum(num, uniqueNums, i)) {
+            if (isUniqueNum(num, uniqueNums, i)) {
                 uniqueNums[i] = num;
-                sortArr(uniqueNums, i);
             } else {
                 i--;
             }
         }
+        sortArr(uniqueNums);
         outIntArr(uniqueNums);
 
         System.out.println("6. Копирование не пустых строк");
-        String[] stringArr = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
-        outStringArr(stringArr);
+        String[] srcArr = {"    ", "AA", "", "BBB", "CC", "D", "    ", "E", "FF", "G", ""};
+        outStrArr(srcArr);
         len = 0;
-        for (String string : stringArr) {
+        for (String string : srcArr) {
             if (!string.isBlank()) {
                 len++;
             }
         }
-        String[] stringArr2 = new String[len];
-        copyString(stringArr, stringArr2);
-        outStringArr(stringArr2);
+        String[] destArr = new String[len];
+        copyStrings(srcArr, destArr);
+        outStrArr(destArr);
     }
 
     private static void outIntArr(int[] arr) {
         int i = 0;
-        for (int num: arr) {
+        for (int num : arr) {
             System.out.print(i % 10 == 9 ? num + "\n" : num + " ");
             i++;
         }
@@ -97,19 +97,16 @@ public class ArrayTheme {
     private static void outDoubleArr(double[] arr) {
         int len = arr.length;
         for (int i = 0; i < len; i++) {
-            if (arr[i] == 0) {
-                System.out.printf("%6d ", (int) arr[i]);
-            } else {
-                System.out.printf("%6.3f ", arr[i]);
-            }
+            System.out.printf("%.3f ", arr[i]);
             if (i == len / 2) {
                 System.out.println();
             }
         }
         System.out.println();
     }
-    private static boolean checkNum(int num, int[] arr, int count) {
-        for (int i = 0; i < count; i ++) {
+    
+    private static boolean isUniqueNum(int num, int[] arr, int stepCount) {
+        for (int i = 0; i < stepCount; i ++) {
             if (arr[i] == num) {
                 return false;
             }
@@ -117,34 +114,37 @@ public class ArrayTheme {
         return true;
     }
 
-    private static void sortArr(int[] arr, int count) {
-        for (int i = 0; i < count; i++) {
-            if (arr[i] > arr[count]) {
-                int temp = arr[count];
-                arr[count] = arr[i];
-                arr[i] = temp;
+    private static void sortArr(int[] arr) {
+        int len = arr.length;
+        for (int i = len - 1; i > 0; i--) {
+            for (int j = 0; j < i; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
             }
         }
     }
 
-    private static void outStringArr(String[] arr) {
+    private static void outStrArr(String[] arr) {
         for (String string : arr) {
             System.out.print("\"" + string + "\"" + " ");
         }
         System.out.println();
     }
 
-    private static void copyString(String[] arr1, String[] arr2) {
-        int count = 0;
+    private static void copyStrings(String[] arr, String[] arr2) {
+        int stepCount = 0;
         int j = 0;
-        int len = arr1.length;
+        int len = arr.length;
         for (int i = 0; i < len; i++) {
-            if (!arr1[i].isBlank()) {
-                count++;
-            } else if (count > 0) {
-                System.arraycopy(arr1, i - count, arr2, j, count);
-                j += count;
-                count = 0;
+            if (!arr[i].isBlank()) {
+                stepCount++;
+            } else if (stepCount > 0) {
+                System.arraycopy(arr, i - stepCount, arr2, j, stepCount);
+                j += stepCount;
+                stepCount = 0;
             }
         }
     }
