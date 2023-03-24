@@ -2,25 +2,25 @@ package com.startjava.lesson_2_3_4.calculator;
 
 public class Calculator {
 
-    public int calculate(int num1, int num2, char sign) {
-        switch(sign) {
-            case '+' :
-                return num1 + num2;
-            case '-' :
-                return num1 - num2;
-            case '*' :
-                return num1 * num2;
-            case '/' :
-                return num1 / num2;
-            case '^' :
-                int result = 1;
-                for (int i = 0; i < num2; i++) {
-                    result *= num1;
-                }
-                return result;
-            case '%' :
-                return num1 % num2;
+    public static double calculate(String expression) {
+        if (!expression.matches("[^\\- ]?\\d+ [+\\-*/^%] [^\\- ]?\\d+")) {
+            throw new RuntimeException("\nВыражение введено некорректно!\n" +
+                    "Операции возможны только с целыми положительными числами.\n" +
+                    "Возможные операции: +, -, *, /, ^, %.\n" +
+                    "Введите выражение формата: \"число операция число\".\n");
         }
-        return 0;
+        String[] vars = expression.split(" ");
+        int num1 = Integer.parseInt(vars[0]);
+        char sign = vars[1].charAt(0);
+        int num2 = Integer.parseInt(vars[2]);
+        return switch (sign) {
+            case '+' -> Math.addExact(num1, num2);
+            case '-' -> Math.subtractExact(num1, num2);
+            case '*' -> Math.multiplyExact(num1, num2);
+            case '/' -> (num1 + 0.0) / num2;
+            case '^' -> Math.pow(num1, num2);
+            case '%' -> Math.abs(Math.IEEEremainder(num1, num2));
+            default -> 0;
+        };
     }
 }
