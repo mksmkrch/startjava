@@ -9,15 +9,15 @@ public class Calculator {
                     "Возможные операции: +, -, *, /, ^, %.\n" +
                     "Введите выражение формата: \"число операция число\".\n");
         }
-        String[] vars = expression.split(" ");
-        int num1 = Integer.parseInt(vars[0]);
-        char sign = vars[1].charAt(0);
-        int num2 = Integer.parseInt(vars[2]);
+        String[] expressionParts = expression.split(" ");
+        int num1 = Integer.parseInt(expressionParts[0]);
+        char sign = expressionParts[1].charAt(0);
+        int num2 = Integer.parseInt(expressionParts[2]);
         return switch (sign) {
             case '+' -> Math.addExact(num1, num2);
             case '-' -> Math.subtractExact(num1, num2);
             case '*' -> Math.multiplyExact(num1, num2);
-            case '/' -> (num1 + 0.0) / num2;
+            case '/' -> ((double) num1) / num2;
             case '^' -> Math.pow(num1, num2);
             case '%' -> Math.abs(Math.IEEEremainder(num1, num2));
             default -> 0;

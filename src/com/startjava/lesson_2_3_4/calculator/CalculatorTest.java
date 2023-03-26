@@ -13,16 +13,13 @@ public class CalculatorTest {
                 String expression = scanner.nextLine();
                 try {
                     double result = Calculator.calculate(expression);
-                    System.out.printf("%s = %" + (result - Math.floor(result) < .001 ? ".0" : ".3") + "f\n",
+                    System.out.printf("%s = %" + (result % 1 == 0 ? ".0" : ".3") + "f\n",
                             expression, result);
-                    answer = "no";
+                    System.out.print("Хотите продолжить вычисления? [yes/no]: ");
+                    answer = scanner.nextLine();
                 } catch (RuntimeException e) {
                     System.out.println(e.getMessage());
                 }
-            }
-            if (!answer.equals("yes")) {
-                System.out.print("Хотите продолжить вычисления? [yes/no]: ");
-                answer = scanner.nextLine();
             }
         }
     }
