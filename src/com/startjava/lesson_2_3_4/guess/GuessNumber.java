@@ -7,8 +7,7 @@ public class GuessNumber {
     private final Player player1;
     private final Player player2;
     private int hiddenNumber;
-    private final Scanner scanner = new Scanner(System.in);
-    private static final int maxTry = 10;
+    private static final int MAX_TRY = 10;
 
     public GuessNumber(Player player1, Player player2) {
         this.player1 = player1;
@@ -18,9 +17,9 @@ public class GuessNumber {
     public void start() {
         player1.clearAnswers();
         player2.clearAnswers();
-        System.out.printf("У каждого игрока по %d попыток\n", maxTry);
+        System.out.printf("У каждого игрока по %d попыток\n", MAX_TRY);
         hiddenNumber = (int) (1 + Math.random() * 100);
-        while (player1.getTryNumber() < maxTry || player2.getTryNumber() < maxTry) {
+        while (player1.getTryNumber() < MAX_TRY || player2.getTryNumber() < MAX_TRY) {
             if (makeMove()) break;
         }
         outAnswers();
@@ -35,36 +34,24 @@ public class GuessNumber {
 
     private void inputAnswer(Player player) {
         System.out.print(player.getName() + ", введите число: ");
-        int number = scanner.nextInt();
-        if (!player.setAnswer(number)) {
+        //Scanner scanner = new Scanner(System.in);
+        int number = new Scanner(System.in).nextInt();
+        if (!player.addAnswer(number)) {
             System.out.print("Некорректное число, введите число из диапазона (0, 100]\n");
             inputAnswer(player);
         }
     }
 
     private boolean compare(Player player) {
+        int number = player.getAnswer();
         if (player.getAnswer() == hiddenNumber) {
-            return outWinMessage(player);
+            System.out.printf("Игрок %s угадал число %d с %d попытки\n", player.getName(), number, player.getTryNumber());
+            return true;
         }
-        return outFailureMessage(player);
-    }
-
-    private boolean outWinMessage(Player player) {
-        int number = player.getAnswer();
-        String name = player.getName();
-        int tryNumber = player.getTryNumber();
-        System.out.printf("Игрок %s угадал число %d с %d попытки\n", name, number, tryNumber);
-        return true;
-    }
-
-    private boolean outFailureMessage(Player player) {
-        int number = player.getAnswer();
-        String name = player.getName();
-        int tryNumber = player.getTryNumber();
         System.out.printf("Число %d %s того, что загадал компьютер\n", number,
                 number < hiddenNumber ? "меньше" : "больше");
-        if (tryNumber > 9) {
-            System.out.printf("У %s закончились попытки\n", name);
+        if (player.getTryNumber() > 9) {
+            System.out.printf("У %s закончились попытки\n", player.getName());
         }
         return false;
     }

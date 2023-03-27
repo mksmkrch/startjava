@@ -6,7 +6,7 @@ public class Player {
 
     private final String name;
     private final int[] answers = new int[10];
-    private int tryNumber = 0;
+    private int tryNumber;
 
     public Player(String name) {
         this.name = name;
@@ -20,13 +20,12 @@ public class Player {
         return answers[tryNumber - 1];
     }
 
-    public boolean setAnswer(int number) {
+    public boolean addAnswer(int number) {
         if (number <= 0 || number > 100) {
             return false;
-        } else {
-            answers[tryNumber++] = number;
-            return true;
         }
+        answers[tryNumber++] = number;
+        return true;
     }
 
     public int getTryNumber() {
