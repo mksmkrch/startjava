@@ -7,9 +7,18 @@ public class Player {
     private final String name;
     private final int[] answers = new int[10];
     private int tryNumber;
+    private int score;
 
     public Player(String name) {
         this.name = name;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore() {
+        score++;
     }
 
     public String getName() {
@@ -39,5 +48,9 @@ public class Player {
 
     public String getAnswers() {
         return Arrays.toString(Arrays.copyOf(answers, tryNumber)).replaceAll("[\\[\\],]", "");
+    }
+
+    public void resetScore() {
+        score = 0;
     }
 }
