@@ -13,14 +13,6 @@ public class Player {
         this.name = name;
     }
 
-    public int getScore() {
-        return score;
-    }
-
-    public void setScore() {
-        score++;
-    }
-
     public String getName() {
         return name;
     }
@@ -41,13 +33,21 @@ public class Player {
         return tryNumber;
     }
 
+    public int getScore() {
+        return score;
+    }
+
+    public void upScore() {
+        score++;
+    }
+
     public void clearAnswers() {
         Arrays.fill(answers, 0, tryNumber, 0);
         tryNumber = 0;
     }
 
-    public String getAnswers() {
-        return Arrays.toString(Arrays.copyOf(answers, tryNumber)).replaceAll("[\\[\\],]", "");
+    public int[] getAnswers() {
+        return Arrays.copyOf(answers, tryNumber);
     }
 
     public void resetScore() {

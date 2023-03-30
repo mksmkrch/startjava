@@ -26,7 +26,7 @@ public class GuessNumber {
             System.out.printf("РАУНД %d\nУ каждого игрока по %d попыток\n", round + 1, MAX_TRY);
             hiddenNumber = (int) (1 + Math.random() * 100);
             for (int attempt = 0; attempt < MAX_TRY; attempt++) {
-                if (makeMove()) break;
+                if (isGuessed()) break;
             }
             outAnswers();
         }
@@ -43,7 +43,7 @@ public class GuessNumber {
         System.out.println("Игроки бросили жребий");
     }
 
-    private boolean makeMove() {
+    private boolean isGuessed() {
         for (Player player : players) {
             inputAnswer(player);
             if (compare(player)) return true;
@@ -53,7 +53,6 @@ public class GuessNumber {
 
     private void inputAnswer(Player player) {
         System.out.print(player.getName() + ", введите число: ");
-        //Scanner scanner = new Scanner(System.in);
         int number = new Scanner(System.in).nextInt();
         if (!player.addAnswer(number)) {
             System.out.print("Некорректное число, введите число из диапазона (0, 100]\n");
@@ -64,8 +63,9 @@ public class GuessNumber {
     private boolean compare(Player player) {
         int number = player.getAnswer();
         if (player.getAnswer() == hiddenNumber) {
-            System.out.printf("Игрок %s угадал число %d с %d попытки\n", player.getName(), number, player.getTryNumber());
-            player.setScore();
+            System.out.printf("Игрок %s угадал число %d с %d попытки\n", player.getName(), number,
+                    player.getTryNumber());
+            player.upScore();
             return true;
         }
         System.out.printf("Число %d %s того, что загадал компьютер\n", number,
@@ -78,7 +78,9 @@ public class GuessNumber {
 
     private void outAnswers() {
         for (Player player : players) {
-            System.out.printf("Все ответы %s: %s\n", player.getName(), player.getAnswers());
+            System.out.printf("Все ответы %s: %s\n", player.getName(),
+                    Arrays.toString(player.getAnswers()).replaceAll("[\\[\\],]", ""));
+            return ;
         }
     }
 
